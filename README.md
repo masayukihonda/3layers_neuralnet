@@ -24,9 +24,7 @@ D# 3layers_neuralnet
 
 ## Demo
  Following image is this program's result sample.
- https://user-images.githubusercontent.com/22788346/29750042-8f20ff72-8b73-11e7-9e75-ac36d00a49a4.png
- 
-
+![2017-08-27](https://user-images.githubusercontent.com/22788346/29750042-8f20ff72-8b73-11e7-9e75-ac36d00a49a4.png)
 ## Optional Issue
  - I write solving overflow problem (at caluculating sigmoid exp).
  - I implemented this program with dropout algolism in branch. but it was needless because overfitting didn't happen. 
