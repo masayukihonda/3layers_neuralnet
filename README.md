@@ -1,5 +1,5 @@
 
-D# 3layers_neuralnet
+# 3layers_neuralnet
 
 ## Overview
  This is 3 layers neural network.
