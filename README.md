@@ -1,4 +1,5 @@
-# 3layers_neuralnet
+
+D# 3layers_neuralnet
 
 ## Overview
  This is 3 layers neural network.
@@ -18,5 +19,13 @@
 - Other software : sourceTree
 
 ## Usage
-Python 3.6 execution environment is required.
-and This program requires Mnist gzip dataset and source.py to be same directory. 
+ Python 3.6 execution environment is required.
+ and This program requires Mnist gzip dataset and source.py to be same directory. 
+
+## Demo
+ Following image is this program's result sample.
+ 
+
+## Optional Issue
+ - I write solving overflow problem (at caluculating sigmoid exp).
+ - I implemented this program with dropout algolism in branch. but it was needless because overfitting didn't happen. 
