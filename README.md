@@ -6,7 +6,7 @@
 
 ## Description
  I subject to following rules.
- - I use only standard liblary.
+ - Using only standard liblary.
  - All the code is placed in a single file (source.py).
  
 ## Development environment
