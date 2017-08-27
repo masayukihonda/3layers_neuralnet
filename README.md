@@ -24,6 +24,7 @@ D# 3layers_neuralnet
 
 ## Demo
  Following image is this program's result sample.
+ https://user-images.githubusercontent.com/22788346/29750042-8f20ff72-8b73-11e7-9e75-ac36d00a49a4.png
  
 
 ## Optional Issue
