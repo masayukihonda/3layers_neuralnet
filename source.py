@@ -73,8 +73,47 @@ class ThreeLayerNet(object):
 
     def lose(self, input_data, train_data):
         y = self.predict(input_data)
-        batch_size = y.shape(1, train_data.size)
+        batch_size = y.shape[0]
         return -np.sum(np.log(y[np.average(batch_size), train_data])) / batch_size
+
+    def accuracy(self, x, t):
+        y = self.predict(x)
+        y = np.argmax(y, axis=1)
+        t = np.argmax(t, axis=1)
+        accuracy = np.sum(y == t) / float(x.shape[0])
+        return accuracy
+
+    def gradient(self, x, t):
+        w1, w2, w3 = self.params['W1'], self.params['W2'], self.params['W3']
+        b1, b2, b3 = self.params['b1'], self.params['b2'], self.params['b3']
+        grads = dict()
+        batch_num = x.shape[0]
+
+        # forward
+        a1 = np.dot(x, w1) + b1
+        z1 = Function.sigmoid(a1)
+        a2 = np.dot(z1, w2) + b2
+        z2 = Function.sigmoid(a2)
+        a3 = np.dot(z2, w3) + b3
+        y = Function.softmax(a3)
+
+        # backward
+        dy = (y - t) / batch_num
+
+        grads['w3'] = np.dot(z2.T, dy)
+        grads['b3'] = np.sum(dy, axis=0)
+        da2 = np.dot(dy, w3.T)
+        dz2 = Function.sigmoid_grad(a2) * da2
+
+        grads['w2'] = np.dot(z1.T, dz2)
+        grads['b2'] = np.sum(dy, axis=0)
+        da1 = np.dot(dy, w2.T)
+        dz1 = Function.sigmoid_grad(a1) * da1
+
+        grads['w1'] = np.dot(x.T, dz1)
+        grads['b1'] = np.sum(dz1, axis=0)
+
+        return grads
 
 
 class Function(object):
@@ -83,6 +122,9 @@ class Function(object):
 
     def sigmoid(self, x):
         return 1 / (1 + np.exp(-x))
+
+    def sigmoid_grad(x):
+        return (1.0 - Function.sigmoid(x)) * Function.sigmoid(x)
 
     def softmax(self, x):
         if x.ndim == 2:
